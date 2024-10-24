@@ -322,7 +322,8 @@ class Timos extends OS implements MplsDiscovery, MplsPolling, WirelessPowerDisco
                 continue;
             }
             [$svcId, $sapPortId, $sapEncapValue] = explode('.', $key);
-            $svc_id = $svcs->firstWhere('svc_oid', $svcId)->svc_id;
+            $svc_id = $svcs->firstWhere('svc_oid', $svcId)->svc_id ?? null;
+            if (is_null($svc_id)) continue;
             $traffic_id = $svcId . '.' . $sapPortId . '.' . $this->nokiaEncap($sapEncapValue);
 
             $saps->push(new MplsSap([
@@ -362,8 +363,8 @@ class Timos extends OS implements MplsDiscovery, MplsPolling, WirelessPowerDisco
             $bind_id = str_replace(' ', '', $value['sdpBindId'] ?? '');
             $sdp_oid = hexdec(substr($bind_id, 0, 8));
             $svc_oid = hexdec(substr($bind_id, 9, 16));
-            $sdp_id = $sdps->firstWhere('sdp_oid', $sdp_oid)->sdp_id;
-            $svc_id = $svcs->firstWhere('svc_oid', $svcId)->svc_id;
+            $sdp_id = $sdps->firstWhere('sdp_oid', $sdp_oid)->sdp_id ?? null;
+            $svc_id = $svcs->firstWhere('svc_oid', $svcId)->svc_id ?? null;
             if (isset($sdp_id, $svc_id, $sdp_oid, $svc_oid)) {
                 $binds->push(new MplsSdpBind([
                     'sdp_id' => $sdp_id,
@@ -678,7 +679,8 @@ class Timos extends OS implements MplsDiscovery, MplsPolling, WirelessPowerDisco
                 continue;
             }
             [$svcId, $sapPortId, $sapEncapValue] = explode('.', $key);
-            $svc_id = $svcs->firstWhere('svc_oid', $svcId)->svc_id;
+            $svc_id = $svcs->firstWhere('svc_oid', $svcId)->svc_id ?? null;
+            if (is_null($svc_id)) continue;
             $traffic_id = $svcId . '.' . $sapPortId . '.' . $this->nokiaEncap($sapEncapValue);
 
             // Any unused vlan on a port returns * in sapEncapValue but had OID .4095
@@ -745,8 +747,8 @@ class Timos extends OS implements MplsDiscovery, MplsPolling, WirelessPowerDisco
             $bind_id = str_replace(' ', '', $value['sdpBindId'] ?? '');
             $sdp_oid = hexdec(substr($bind_id, 0, 8));
             $svc_oid = hexdec(substr($bind_id, 9, 16));
-            $sdp_id = $sdps->firstWhere('sdp_oid', $sdp_oid)->sdp_id;
-            $svc_id = $svcs->firstWhere('svc_oid', $svcId)->svc_id;
+            $sdp_id = $sdps->firstWhere('sdp_oid', $sdp_oid)->sdp_id ?? null;
+            $svc_id = $svcs->firstWhere('svc_oid', $svcId)->svc_id ?? null;
             if (isset($sdp_id, $svc_id, $sdp_oid, $svc_oid)) {
                 $binds->push(new MplsSdpBind([
                     'sdp_id' => $sdp_id,
