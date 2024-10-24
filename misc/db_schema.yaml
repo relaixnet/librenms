@@ -1182,7 +1182,7 @@ mpls_sdp_binds:
     - { Field: sdpBindLastMgmtChange, Type: bigint, 'Null': true, Extra: '' }
     - { Field: sdpBindLastStatusChange, Type: bigint, 'Null': true, Extra: '' }
     - { Field: sdpBindType, Type: "enum('spoke','mesh')", 'Null': true, Extra: '' }
-    - { Field: sdpBindVcType, Type: "enum('undef','ether','vlan','mirrior','atmSduatmCell','atmVcc','atmVpc','frDlci','ipipe','satopE1','satopT1','satopE3','satopT3','cesopsn','cesopsnCas')", 'Null': true, Extra: '' }
+    - { Field: sdpBindVcType, Type: "enum('undef','ether','vlan','mirror','atmSdu','atmCell','atmVcc','atmVpc','frDlci','ipipe','satopE1','satopT1','satopE3','satopT3','cesopsn','cesopsnCas')", 'Null': true, Extra: '' }
     - { Field: sdpBindBaseStatsIngFwdPackets, Type: bigint, 'Null': true, Extra: '' }
     - { Field: sdpBindBaseStatsIngFwdOctets, Type: bigint, 'Null': true, Extra: '' }
     - { Field: sdpBindBaseStatsEgrFwdPackets, Type: bigint, 'Null': true, Extra: '' }

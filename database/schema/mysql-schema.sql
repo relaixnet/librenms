@@ -379,7 +379,7 @@ CREATE TABLE `bill_data` (
   `timestamp` datetime NOT NULL,
   `period` int(11) NOT NULL,
   `delta` bigint(20) NOT NULL,
-  `in_delta` bigint(20) NOT NULL, 
+  `in_delta` bigint(20) NOT NULL,
   `out_delta` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `bill_data_bill_id_index` (`bill_id`)
@@ -1317,7 +1317,7 @@ CREATE TABLE `mpls_sdp_binds` (
   `sdpBindLastMgmtChange` bigint(20) DEFAULT NULL,
   `sdpBindLastStatusChange` bigint(20) DEFAULT NULL,
   `sdpBindType` enum('spoke','mesh') DEFAULT NULL,
-  `sdpBindVcType` enum('undef','ether','vlan','mirrior','atmSduatmCell','atmVcc','atmVpc','frDlci','ipipe','satopE1','satopT1','satopE3','satopT3','cesopsn','cesopsnCas') DEFAULT NULL,
+  `sdpBindVcType` enum('undef','ether','vlan','mirror','atmSdu','atmCell','atmVcc','atmVpc','frDlci','ipipe','satopE1','satopT1','satopE3','satopT3','cesopsn','cesopsnCas') DEFAULT NULL,
   `sdpBindBaseStatsIngFwdPackets` bigint(20) DEFAULT NULL,
   `sdpBindBaseStatsIngFwdOctets` bigint(20) DEFAULT NULL,
   `sdpBindBaseStatsEgrFwdPackets` bigint(20) DEFAULT NULL,

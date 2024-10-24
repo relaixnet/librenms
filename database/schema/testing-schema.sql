@@ -1317,7 +1317,7 @@ CREATE TABLE `mpls_sdp_binds` (
   `sdpBindLastMgmtChange` bigint(20) DEFAULT NULL,
   `sdpBindLastStatusChange` bigint(20) DEFAULT NULL,
   `sdpBindType` enum('spoke','mesh') DEFAULT NULL,
-  `sdpBindVcType` enum('undef','ether','vlan','mirrior','atmSduatmCell','atmVcc','atmVpc','frDlci','ipipe','satopE1','satopT1','satopE3','satopT3','cesopsn','cesopsnCas') DEFAULT NULL,
+  `sdpBindVcType` enum('undef','ether','vlan','mirror','atmSdu','atmCell','atmVcc','atmVpc','frDlci','ipipe','satopE1','satopT1','satopE3','satopT3','cesopsn','cesopsnCas') DEFAULT NULL,
   `sdpBindBaseStatsIngFwdPackets` bigint(20) DEFAULT NULL,
   `sdpBindBaseStatsIngFwdOctets` bigint(20) DEFAULT NULL,
   `sdpBindBaseStatsEgrFwdPackets` bigint(20) DEFAULT NULL,
