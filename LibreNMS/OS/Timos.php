@@ -317,7 +317,7 @@ class Timos extends OS implements MplsDiscovery, MplsPolling, WirelessPowerDisco
         $filter_value = '/^Internal SAP/';
 
         foreach ($mplsSapCache as $key => $value) {
-            if (preg_match($filter_key, $key) || preg_match($filter_value, $value['sapDescription'])) {
+            if (preg_match($filter_key, $key) || isset($value['sapDescription']) && preg_match($filter_value, $value['sapDescription'])) {
                 unset($key);
                 continue;
             }
@@ -333,7 +333,7 @@ class Timos extends OS implements MplsDiscovery, MplsPolling, WirelessPowerDisco
                 'sapEncapValue' => $this->nokiaEncap($sapEncapValue),
                 'sapRowStatus' => $value['sapRowStatus'],
                 'sapType' => $value['sapType'],
-                'sapDescription' => $value['sapDescription'],
+                'sapDescription' => $value['sapDescription'] ?? null,
                 'sapAdminStatus' => $value['sapAdminStatus'],
                 'sapOperStatus' => $value['sapOperStatus'],
                 'sapLastMgmtChange' => round(($value['sapLastMgmtChange'] ?? 0) / 100),
@@ -673,7 +673,7 @@ class Timos extends OS implements MplsDiscovery, MplsPolling, WirelessPowerDisco
         $ifIndexNames = $this->getDevice()->ports()->pluck('ifName', 'ifIndex');
 
         foreach ($mplsSapCache as $key => $value) {
-            if (preg_match($filter_key, $key) || preg_match($filter_value, $value['sapDescription'])) {
+            if (preg_match($filter_key, $key) || isset($value['sapDescription']) && preg_match($filter_value, $value['sapDescription'])) {
                 unset($key);
                 continue;
             }
@@ -697,7 +697,7 @@ class Timos extends OS implements MplsDiscovery, MplsPolling, WirelessPowerDisco
                 'sapEncapValue' => $this->nokiaEncap($sapEncapValue),
                 'sapRowStatus' => $value['sapRowStatus'],
                 'sapType' => $value['sapType'],
-                'sapDescription' => $value['sapDescription'],
+                'sapDescription' => $value['sapDescription'] ?? null,
                 'sapAdminStatus' => $value['sapAdminStatus'],
                 'sapOperStatus' => $value['sapOperStatus'],
                 'sapLastMgmtChange' => round($value['sapLastMgmtChange'] / 100),
