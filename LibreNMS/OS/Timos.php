@@ -510,6 +510,11 @@ class Timos extends OS implements MplsDiscovery, MplsPolling, WirelessPowerDisco
     public function pollMplsSdps(): Collection
     {
         return SnmpQuery::hideMib()->enumStrings()->walk('TIMETRA-SDP-MIB::sdpInfoTable')->mapTable(function ($value) {
+            if (empty($value['sdpFarEndInetAddress'])) {
+                $far_end_ip = null;
+            } else {
+                $far_end_ip = IP::fromHexString($value['sdpFarEndInetAddress'], true);
+            }
             return new MplsSdp([
                 'sdp_oid' => $value['sdpId'],
                 'device_id' => $this->getDeviceId(),
@@ -524,7 +529,7 @@ class Timos extends OS implements MplsDiscovery, MplsPolling, WirelessPowerDisco
                 'sdpLastStatusChange' => round($value['sdpLastStatusChange'] / 100),
                 'sdpActiveLspType' => $value['sdpActiveLspType'] ?? null,
                 'sdpFarEndInetAddressType' => $value['sdpFarEndInetAddressType'] ?? null,
-                'sdpFarEndInetAddress' => IP::fromHexString($value['sdpFarEndInetAddress'], true) ?? null,
+                'sdpFarEndInetAddress' => $far_end_ip,
             ]);
         });
     }
