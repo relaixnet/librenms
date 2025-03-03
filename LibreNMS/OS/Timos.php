@@ -285,7 +285,7 @@ class Timos extends OS implements MplsDiscovery, MplsPolling, WirelessPowerDisco
                 return null;
             }
 
-            if ((! isset($svcId)) || is_null($svcId)) {
+            if (empty($svcId)) {
                 return null;
             }
 
@@ -590,7 +590,7 @@ class Timos extends OS implements MplsDiscovery, MplsPolling, WirelessPowerDisco
                 return null;
             }
 
-            if ((! isset($svcId)) || is_null($svcId)) {
+            if (empty($svcId)) {
                 return null;
             }
 
