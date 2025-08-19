@@ -4132,7 +4132,7 @@
             "default": {
                 "section": "system",
                 "order": 0,
-                "descr": "I/0 Wait"
+                "descr": "I/O Wait"
             },
             "type": "graph"
         },
@@ -5892,6 +5892,13 @@
             "group": "poller",
             "section": "poller_modules",
             "default": true,
+            "type": "boolean"
+        },
+        "poller_modules.vlans": {
+            "order": 340,
+            "group": "poller",
+            "section": "poller_modules",
+            "default": false,
             "type": "boolean"
         },
         "poller_modules.junose-atm-vp": {
